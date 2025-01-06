@@ -9,7 +9,7 @@
             "SKIP_FAILED_REQUESTS": false
         }
     },
-    "NATIVE_CLIENT": false,
+    "NATIVE_CLIENT": true,
     "DEBUG": true,
     "couponConfig": {
         "IS_ENABLED": false,
@@ -20,8 +20,8 @@
     "evmchains": [
         {
             "ID": "KITE",
-            "NAME": "Kite",
-            "TOKEN": "KITE",
+            "NAME": "Kite Testnet",
+            "TOKEN": "TKT",
             "RPC": "http://44.211.156.191:9650/ext/bc/VNMhjeX6p7xc24K9BCAijEDoX9xpUVDnkvJFNUuCXm71XU6QU/rpc",
             "CHAINID": 2368,
             "EXPLORER": "https://subnets-test.avax.network/c-chain",
