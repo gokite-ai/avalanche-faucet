@@ -41,15 +41,15 @@
     ],
     "erc20tokens": [
         {
-            "ID": "USDCC",
-            "HOSTID": "KITE0",
-            "NAME": "USDC (Circle)",
-            "TOKEN": "USDC",
-            "IMAGE": "https://cryptologos.cc/logos/usd-coin-usdc-logo.png",
-            "CONTRACTADDRESS": "0x5425890298aed601595a70ab815c96711a31bc65",
+            "ID": "USDT",
+            "HOSTID": "KITE",
+            "NAME": "USDT",
+            "TOKEN": "USDT",
+            "IMAGE": "https://cryptologos.cc/logos/tether-usdt-logo.png",
+            "CONTRACTADDRESS": "0xE4f7bd1A61913956aD56E843fEe29e21D459e030",
             "DRIP_AMOUNT": 1,
             "GASLIMIT": "100000",
-            "DECIMALS": 6,
+            "DECIMALS": 18,
             "RATELIMIT": {
                 "MAX_LIMIT": 1,
                 "WINDOW_SIZE": 1440
