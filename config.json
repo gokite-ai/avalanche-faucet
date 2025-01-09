@@ -20,12 +20,12 @@
     "evmchains": [
         {
             "ID": "KITE",
-            "NAME": "Kite Testnet",
+            "NAME": "KiteAI Testnet",
             "TOKEN": "TKT",
-            "RPC": "http://44.211.156.191:9650/ext/bc/2jDBARRwqyGWtymFYTtB8ESRztwTM8eYNBWdqNZ7nxxrC3LwUf/rpc",
+            "RPC": "http://rpc-testnet.gokite.ai/ext/bc/2jDBARRwqyGWtymFYTtB8ESRztwTM8eYNBWdqNZ7nxxrC3LwUf/rpc",
             "CHAINID": 2368,
-            "EXPLORER": "https://subnets-test.avax.network/c-chain",
-            "IMAGE": "https://glacier-api.avax.network/proxy/chain-assets/main/chains/43113/chain-logo.png",
+            "EXPLORER": "https://kite-testnet.blockscout.com/",
+            "IMAGE": "/kiteai.png",
             "MAX_PRIORITY_FEE": "10000000000",
             "MAX_FEE": "100000000000",
             "DRIP_AMOUNT": 2,

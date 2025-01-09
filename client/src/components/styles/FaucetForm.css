@@ -37,12 +37,25 @@ a {
 }
 
 .banner {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     background-color: rgb(26, 26, 28);
     border-radius: 8px;
-    height: 140px;
+    height: 80px;
+    padding: 20px;
+}
+
+.banner img {
+    height: 40px;
+    width: 40px;
+}
+
+.banner span {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .card-title {
@@ -63,7 +76,7 @@ a {
 .select-dropdown > img{
     width: 25px;
     height: 25px;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     margin-right: 10px;
 }
 

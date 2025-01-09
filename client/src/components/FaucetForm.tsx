@@ -497,7 +497,10 @@ const FaucetForm = (props: any) => {
     return (
         <div className='container'>
             <div className = "box">
-                <div className='banner' style={{backgroundImage: `url(${props.config.banner})`}}/>
+                <div className='banner'>
+                    <img src="/kiteai.svg" alt="KiteAI Logo" />
+                    <span>KiteAI Faucet</span>
+                </div>
 
                 <div className='box-content'>
                     <div className='box-header'>
@@ -548,13 +551,13 @@ const FaucetForm = (props: any) => {
 
                         <br/>
 
-                        <div className='address-input'>
+                        {/* <div className='address-input'>
                             <input
                                 placeholder='Coupon ID (optional)'
                                 value={couponId || ""}
                                 onChange={(e) => updateCouponId(e.target.value)}
                             />
-                        </div>
+                        </div> */}
 
                         <span className='rate-limit-text' style={{color: "red"}}>{sendTokenResponse?.message}</span>
 
