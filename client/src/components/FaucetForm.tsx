@@ -113,7 +113,7 @@ const FaucetForm = (props: any) => {
             const { chain: ch } = getChainParams();
 
             let item = <div className='select-dropdown'>
-                <img alt = { chain.NAME[0] } src = { chain.IMAGE } />
+                <img alt = { chain.NAME[0] } src = { chain.TOKEN_IMAGE } />
                 { chain.ID == ch ? chain.TOKEN : chain.NAME }
 
                 <span style={{color: 'rgb(180, 180, 183)', fontSize: "10px", marginLeft: "5px"}}>
@@ -497,10 +497,7 @@ const FaucetForm = (props: any) => {
     return (
         <div className='container'>
             <div className = "box">
-                <div className='banner'>
-                    <img src="/kiteai.svg" alt="KiteAI Logo" />
-                    <span>KiteAI Faucet</span>
-                </div>
+            <div className='banner' style={{backgroundImage: `url(${props.config.banner})`}}/>
 
                 <div className='box-content'>
                     <div className='box-header'>

@@ -37,25 +37,12 @@ a {
 }
 
 .banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 340px;
     background-color: rgb(26, 26, 28);
     border-radius: 8px;
-    height: 80px;
-    padding: 20px;
-}
-
-.banner img {
-    height: 40px;
-    width: 40px;
-}
-
-.banner span {
-    color: white;
-    font-size: 24px;
-    font-weight: 500;
+    height: 140px;
 }
 
 .card-title {
