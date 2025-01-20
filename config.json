@@ -22,7 +22,7 @@
             "ID": "KITE",
             "NAME": "KiteAI Testnet",
             "TOKEN": "KITE",
-            "RPC": "https://rpc-testnet.gokite.ai/ext/bc/nQ9iPT7ZQQx1qwBTs68EGiU8cu1GHMMjzvYktmA3oRs4esg3V/rpc",
+            "RPC": "https://rpc-testnet.gokite.ai",
             "CHAINID": 2368,
             "EXPLORER": "https://testnet.kitescan.ai",
             "IMAGE": "/icon-chain.png",
@@ -49,7 +49,7 @@
             "IMAGE": "https://cryptologos.cc/logos/tether-usdt-logo.png",
             "TOKEN_IMAGE": "https://cryptologos.cc/logos/tether-usdt-logo.png",
             "CONTRACTADDRESS": "0x0fF5393387ad2f9f691FD6Fd28e07E3969e27e63",
-            "DRIP_AMOUNT": 1,
+            "DRIP_AMOUNT": 10,
             "GASLIMIT": "100000",
             "DECIMALS": 18,
             "RATELIMIT": {
