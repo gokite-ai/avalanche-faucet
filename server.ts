@@ -191,6 +191,40 @@ router.post('/sendToken', captcha.middleware, async (req: any, res: any) => {
     })
 })
 
+// POST request for sending tokens or coins
+router.post('/claimToken', async (req: any, res: any) => {
+    const address: string = req.body?.address
+    const chain: string = req.body?.chain
+    const dripAmount: number = req.body?.amount
+    const erc20: string | undefined = req.body?.erc20
+    const coupon: string | undefined = req.body?.coupon
+
+    if (!dripAmount || dripAmount <= 0) {
+        res.status(400).send({ message: 'Invalid amount passed!' })
+        return
+    }
+
+    if (coupon !== process.env.NEO_COUPON_ID) {
+        res.status(400).send({ message: 'Invalid coupon passed!' })
+        return
+    }
+
+    // initialize instances
+    const evm = evms.get(chain)
+    const erc20Instance = evm?.instance?.contracts?.get(erc20 ?? "")
+
+    // validate parameters
+    if (evm === undefined || (erc20 && erc20Instance === undefined)) {
+        res.status(400).send({ message: 'Invalid parameters passed!' })
+        return
+    }
+
+    evm.instance.sendToken(address, erc20, dripAmount, async (data: SendTokenResponse) => {
+        const { status, message, txHash } = data
+        res.status(status).send({message, txHash})
+    })
+})
+
 // GET request for fetching all the chain and token configurations
 router.get('/getChainConfigs', (req: any, res: any) => {
     const configs: any = [...evmchains, ...erc20tokens]
