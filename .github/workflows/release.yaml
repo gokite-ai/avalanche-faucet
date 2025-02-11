@@ -2,11 +2,11 @@ name: Prod - release Docker image
 
 on:
   push:
-    tags: [ 'v*.*.*' ]
+    tags: ["v*.*.*"]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: zettablock/avalanche-faucet
+  IMAGE_NAME: gokite-ai/avalanche-faucet
 
 jobs:
   build-and-push:
