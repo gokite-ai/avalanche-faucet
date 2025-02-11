@@ -29,7 +29,7 @@
             "TOKEN_IMAGE": "/icon-token.png",
             "MAX_PRIORITY_FEE": "10000000000",
             "MAX_FEE": "100000000000",
-            "DRIP_AMOUNT": 2,
+            "DRIP_AMOUNT": 0.5,
             "DECIMALS": 18,
             "RECALIBRATE": 30,
             "COUPON_REQUIRED": false,
@@ -49,7 +49,7 @@
             "IMAGE": "https://cryptologos.cc/logos/tether-usdt-logo.png",
             "TOKEN_IMAGE": "https://cryptologos.cc/logos/tether-usdt-logo.png",
             "CONTRACTADDRESS": "0x0fF5393387ad2f9f691FD6Fd28e07E3969e27e63",
-            "DRIP_AMOUNT": 10,
+            "DRIP_AMOUNT": 2,
             "GASLIMIT": "100000",
             "DECIMALS": 18,
             "RATELIMIT": {
