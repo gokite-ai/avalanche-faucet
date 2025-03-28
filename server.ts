@@ -225,6 +225,72 @@ router.post('/claimToken', async (req: any, res: any) => {
     })
 })
 
+// POST request for batch sending native token and ERC20 tokens
+router.post('/batchClaimToken', async (req: any, res: any) => {
+    const address: string = req.body?.address
+    const chain: string = req.body?.chain ?? "KITE"
+    const kiteAmount: number = req.body?.kiteAmount
+    const erc20: string | undefined = req.body?.erc20 ?? "USDT"
+    const erc20Amount: number = req.body?.erc20Amount
+    const coupon: string | undefined = req.body?.coupon
+
+    if (!kiteAmount || kiteAmount <= 0) {
+        res.status(400).send({ message: 'Invalid amount passed!' })
+        return
+    }
+
+    if (coupon !== process.env.NEO_COUPON_ID) {
+        res.status(400).send({ message: 'Invalid coupon passed!' })
+        return
+    }
+
+    // initialize instances
+    const evm = evms.get(chain)
+    const erc20Instance = evm?.instance?.contracts?.get(erc20 ?? "")
+
+    // validate parameters
+    if (evm === undefined || (erc20 && erc20Instance === undefined)) {
+        res.status(400).send({ message: 'Invalid parameters passed!' })
+        return
+    }
+
+    const nativeTransferPromise = new Promise<SendTokenResponse>((resolve, reject) => {
+        try {
+            evm.instance.sendToken(address, undefined, kiteAmount, async (data: SendTokenResponse) => {
+                const { status, message, txHash } = data
+                resolve({ status, message, txHash })
+            })
+        } catch (err: any) {
+            reject(err)
+        }
+    })
+
+    const erc20TransferPromise = new Promise<SendTokenResponse>((resolve, reject) => {
+        try {
+            evm.instance.sendToken(address, erc20, erc20Amount, async (data: SendTokenResponse) => {
+                const { status, message, txHash } = data
+                resolve({ status, message, txHash })
+            })
+        } catch (err: any) {
+            reject(err)
+        }
+    })
+
+    Promise.all([nativeTransferPromise, erc20TransferPromise]).then(([nativeTransfer, erc20Transfer]) => {
+        if (nativeTransfer.status === 200 && erc20Transfer.status === 200) {
+            res.status(200).send({ message: 'Tokens sent successfully', data: { nativeTxHash: nativeTransfer.txHash, erc20TxHash: erc20Transfer.txHash } })
+        } else if (nativeTransfer.status === 200) {
+            res.status(400).send({ message: 'Native token sent successfully', data: { nativeTxHash: nativeTransfer.txHash, erc20TxHash: null } })
+        } else if (erc20Transfer.status === 200) {
+            res.status(400).send({ message: 'ERC20 token sent successfully', data: { nativeTxHash: null, erc20TxHash: erc20Transfer.txHash } })
+        } else {
+            res.status(400).send({ message: 'Failed to send tokens' })
+        }
+    }).catch((err: any) => {
+        res.status(400).send({ message: err.message })
+    })
+});
+
 // GET request for fetching all the chain and token configurations
 router.get('/getChainConfigs', (req: any, res: any) => {
     const configs: any = [...evmchains, ...erc20tokens]
